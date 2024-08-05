@@ -1,21 +1,11 @@
-/*module.exports = (req, res, next) => {
-  if (req.body.cliente) {
-    req.body.cliente = req.body.cliente.replace("Abraão", "Não Use Abraão");
-    console.log();
-    console.log(`Vi que você postou ${req.body.cliente}`);
-    console.log();
-  }
-
-  next();
-};*/
-
 exports.middlewareGlobal = (req, res, next) => {
-  res.locals.umaVariavelLocal = "Este é o valor da variável local.";
+  res.locals.errors = req.flash("errors");
+  res.locals.success = req.flash("success");
   next();
 };
 
 exports.outroMiddleware = (req, res, next) => {
-  console.log("Sou seu outro middlware");
+  next();
 };
 
 exports.checkCsurfError = (err, req, res, next) => {
